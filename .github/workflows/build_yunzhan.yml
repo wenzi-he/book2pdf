@@ -1,0 +1,33 @@
+name: Build YunZhan App
+
+on: [push]
+
+jobs:
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - run: pip install pyinstaller pillow requests selenium bs4 webdriver-manager
+      - run: pyinstaller --onefile --add-binary "chromedriver.exe;." --collect-all selenium yunzhan_app.py 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xinjiaoyu_win-exe
+          path: dist/*.exe
+
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - run: pip install pyinstaller pillow requests selenium bs4 webdriver-manager
+      - run: pyinstaller --onefile --add-binary "chromedriver.exe;." --collect-all selenium yunzhan_app.py   
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xinjiaoyu_mac-app
+          path: dist/*
