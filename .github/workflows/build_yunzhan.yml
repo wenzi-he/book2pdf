@@ -15,7 +15,7 @@ jobs:
       - run: pyinstaller --onefile --add-binary "chromedriver.exe;." --collect-all selenium yunzhan_app.py 
       - uses: actions/upload-artifact@v4
         with:
-          name: xinjiaoyu_win-exe
+          name: yunzhan_win-exe
           path: dist/*.exe
 
   build-mac:
@@ -29,5 +29,5 @@ jobs:
       - run: pyinstaller --onefile --add-binary=chromedriver.exe:. --collect-all selenium yunzhan_app.py   
       - uses: actions/upload-artifact@v4
         with:
-          name: xinjiaoyu_mac-app
+          name: yunzhan_mac-app
           path: dist/*
