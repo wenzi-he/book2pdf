@@ -15,7 +15,7 @@ jobs:
       - run: pyinstaller --onefile xinjiaoyu_app.py  
       - uses: actions/upload-artifact@v4
         with:
-          name: windows-exe
+          name: xinjiaoyu_win-exe
           path: dist/*.exe
 
   build-mac:
@@ -29,5 +29,5 @@ jobs:
       - run: pyinstaller --onefile xinjiaoyu_app.py  
       - uses: actions/upload-artifact@v4
         with:
-          name: mac-app
+          name: xinjiaoyu_mac-app
           path: dist/*
